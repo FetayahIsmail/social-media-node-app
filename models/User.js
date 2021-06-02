@@ -1,5 +1,5 @@
 const validator = require('validator');
-const userCollection = require('../db').collection('users')
+const userCollection = require('../db').db().collection('users')
 class User {
     constructor(data){
         this.data=data,
@@ -37,7 +37,7 @@ class User {
          this.cleanUp()
          userCollection.findOne({username:this.data.username}).then((findObject) => {
           if (findObject && findObject.password == this.data.password) {
-            resolve('taher')
+            resolve(findObject)
           } else {
            reject('klk')
           }

@@ -1,8 +1,18 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
 const app = express()
+let sessionOption = session({
+    secret:'cooool',
+    store: new MongoStore({client:require('./db')}),
+    resave:false ,
+    saveUninitialized:false,
+    cockie:{maxAge:1000*3600*24,httpOnly:true},
+
+})
+app.use(sessionOption)
 const router = require('./router');
-const port = 3000
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
