@@ -23,6 +23,9 @@
 			<input name='email'type="email" placeholder="Email" />
 			<input name='password'type="password" placeholder="Password" />
 			<button>Sign Up</button>
+			<% regErrors.forEach(function(element){%>
+				<div class="errors reg-errors "> <p><%-element%></p> </div>
+			<%}) %>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -38,6 +41,9 @@
 			<input name="password" type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>
+			<% errors.forEach(function(element){%>
+				<div class="errors"> <p><%-element%></p> </div>
+			<%}) %>
 		</form>
 	</div>
 	<div class="overlay-container">

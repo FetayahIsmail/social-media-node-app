@@ -250,3 +250,11 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.errors{
+	color: red;
+}
+.reg-errors p{
+	margin-top: 0;
+	margin-bottom: 0;
+}
