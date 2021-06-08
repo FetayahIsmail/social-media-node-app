@@ -1,7 +1,7 @@
 const User = require('../models/User');
 exports.home = (req,res)=>{
     if (req.session.user) {
-      res.render('login',{username:req.session.user.user,})
+      res.render('login')
     } else {
       res.render('home-g',{errors:req.flash('errors'),regErrors:req.flash('regErrors')})
     }

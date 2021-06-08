@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const session = require('express-session');
+const session = require('express-session')
+const meddleware = require('./middleware/user-middleware');
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash');
 const app = express()
@@ -13,6 +14,7 @@ let sessionOption = session({
 })
 app.use(sessionOption)
 app.use(flash())
+app.use(meddleware.sessionDeta)
 const router = require('./router');
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
