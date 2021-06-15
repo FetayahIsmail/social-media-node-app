@@ -9,7 +9,7 @@ exports.home = (req,res)=>{
 exports.register = (req,res)=>{
     let user = new User(req.body)
     user.register().then((result) => {
-      req.session.user = {user:user.data.username}
+      req.session.user = {user:user.data.username,_id:user.data._id}
       req.session.save(()=>res.redirect('/'))
     }).catch((err) => {
         user.errors.forEach(function(e){
@@ -22,7 +22,7 @@ exports.login = async (req,res)=>{
     let user = new User(req.body)
     try {
       let result=await user.login()
-      req.session.user = {user:user.data.username}
+      req.session.user = {user:user.data.username,_id:user.data._id}
       req.session.save(()=>res.redirect('/'))
     } catch (error) {
       req.flash('errors',error)
